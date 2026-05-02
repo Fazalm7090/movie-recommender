@@ -3,6 +3,9 @@ import pickle
 import requests
 import heapq
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # ─────────────────────────────────────────────
 #  CONFIG
 # ─────────────────────────────────────────────
@@ -13,7 +16,9 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-OMDB_API_KEY = "81c0a085"
+import os
+
+OMDB_API_KEY = os.getenv("OMDB_API_KEY")
 
 # ─────────────────────────────────────────────
 #  GLOBAL CSS
