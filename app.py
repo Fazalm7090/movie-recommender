@@ -489,20 +489,19 @@ def load_data():
 
     movies = pd.read_csv('movies.csv')
 
-    # Create tags
-    movies['tags'] = (
-        movies['overview'].fillna('') + " " +
-        movies['genres'].fillna('')
-    )
+    # tags already exist in CSV
+    movies['tags'] = movies['tags'].fillna('')
 
     # Vectorization
     from sklearn.feature_extraction.text import TfidfVectorizer
+
     tfidf = TfidfVectorizer(stop_words='english')
 
     vectors = tfidf.fit_transform(movies['tags'])
 
-    # Similarity computation
+    # Similarity matrix
     from sklearn.metrics.pairwise import cosine_similarity
+
     similarity = cosine_similarity(vectors)
 
     # Movie index map
