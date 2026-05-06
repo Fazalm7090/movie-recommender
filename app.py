@@ -2,6 +2,8 @@ import streamlit as st
 import pickle
 import requests
 import heapq
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -480,12 +482,36 @@ html, body, [data-testid="stAppViewContainer"] {
 # ─────────────────────────────────────────────
 #  LOAD DATA
 # ─────────────────────────────────────────────
-@st.cache_resource
+@st.cache_data
 def load_data():
-    movies = pickle.load(open('movies.pkl', 'rb'))
-    similarity = pickle.load(open('similarity.pkl', 'rb'))
-    movie_index_map = {title: i for i, title in enumerate(movies['title'])}
+
+    import pandas as pd
+
+    movies = pd.read_csv('movies.csv')
+
+    # Create tags
+    movies['tags'] = (
+        movies['overview'].fillna('') + " " +
+        movies['genres'].fillna('')
+    )
+
+    # Vectorization
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    tfidf = TfidfVectorizer(stop_words='english')
+
+    vectors = tfidf.fit_transform(movies['tags'])
+
+    # Similarity computation
+    from sklearn.metrics.pairwise import cosine_similarity
+    similarity = cosine_similarity(vectors)
+
+    # Movie index map
+    movie_index_map = {
+        title: i for i, title in enumerate(movies['title'])
+    }
+
     return movies, similarity, movie_index_map
+
 
 movies, similarity, movie_index_map = load_data()
 
