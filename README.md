@@ -8,18 +8,17 @@ The app recommends movies similar to the one selected by the user using TF-IDF V
 
 ## 🚀 Live Demo
 
-Add your deployed Streamlit link here:
-
-https://your-streamlit-app-link.streamlit.app
+https://movie-recommender-7a7ajpntcjceavdnvzkw5e.streamlit.app
 
 ---
 
 ## 📸 Screenshots
 
-Add screenshots of:
-- Home page
-- Recommendation results
-- Movie cards UI
+<img width="1470" height="956" alt="Screenshot 2026-05-07 at 5 24 31 AM" src="https://github.com/user-attachments/assets/f7d8f537-7a25-41db-8de4-ac84b6048188" />
+
+<img width="1470" height="956" alt="Screenshot 2026-05-07 at 5 24 49 AM" src="https://github.com/user-attachments/assets/357beca3-5aa3-4588-a3fa-98be75322da4" />
+
+<img width="1470" height="956" alt="Screenshot 2026-05-07 at 5 25 47 AM" src="https://github.com/user-attachments/assets/63c305ac-85e1-4fda-a163-685c73793e7b" />
 
 ---
 
@@ -128,45 +127,6 @@ This improved:
 
 ---
 
-# ▶️ Run Locally
-
-## Clone Repository
-
-```bash
-git clone git@github.com:Fazalm7090/movie-recommender.git
-```
-
-## Move Into Project Folder
-
-```bash
-cd movie-recommender
-```
-
-## Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-## Run Streamlit App
-
-```bash
-streamlit run app.py
-```
-
----
-
-# 🔑 Environment Variables
-
-Create a `.env` file:
-
-```env
-OMDB_API_KEY=your_api_key_here
-```
-
-Never upload `.env` files to GitHub.
-
----
 
 # 📊 Dataset
 
